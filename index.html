@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Professional Resume of Mohamed Mahmoud Ibrahim - Mobile Phone Technician & Microsoldering Specialist">
+    <title>Resume - Mohamed Mahmoud Ibrahim</title>
+
+    <!-- Google Fonts - Inter for professional typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================
+           CSS RESET & BASE STYLES
+        ============================================ */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ============================================
+           CSS CUSTOM PROPERTIES (DESIGN TOKENS)
+        ============================================ */
+        :root {
+            /* Colors */
+            --color-background: #f5f0e8;
+            /* Light beige background */
+            --color-paper: #ffffff;
+            /* White paper background */
+            --color-text-primary: #2d2d2d;
+            /* Dark gray text */
+            --color-text-secondary: #4a4a4a;
+            /* Medium gray text */
+            --color-text-muted: #6b6b6b;
+            /* Muted gray text */
+            --color-accent: #3a3a3a;
+            /* Accent color for headings */
+            --color-border: #d0d0d0;
+            /* Border/separator color */
+
+            /* Typography */
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            --font-size-xs: 0.75rem;
+            /* 12px */
+            --font-size-sm: 0.8125rem;
+            /* 13px */
+            --font-size-base: 0.875rem;
+            /* 14px */
+            --font-size-md: 1rem;
+            /* 16px */
+            --font-size-lg: 1.125rem;
+            /* 18px */
+            --font-size-xl: 1.5rem;
+            /* 24px */
+            --font-size-2xl: 2rem;
+            /* 32px */
+
+            /* Spacing */
+            --spacing-xs: 0.25rem;
+            /* 4px */
+            --spacing-sm: 0.5rem;
+            /* 8px */
+            --spacing-md: 1rem;
+            /* 16px */
+            --spacing-lg: 1.5rem;
+            /* 24px */
+            --spacing-xl: 2rem;
+            /* 32px */
+            --spacing-2xl: 3rem;
+            /* 48px */
+
+            /* A4 Dimensions */
+            --a4-width: 210mm;
+            --a4-min-height: auto;
+
+            /* Layout */
+            --left-column-width: 22%;
+            --right-column-width: 78%;
+            --separator-width: 1px;
+        }
+
+        /* Page settings for printing - removes headers/footers */
+        @page {
+            size: A4;
+            margin: 4mm;
+        }
+
+        /* ============================================
+           PAGE & BODY STYLES
+        ============================================ */
+        body {
+            font-family: var(--font-family);
+            font-size: var(--font-size-base);
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--color-text-primary);
+            background-color: var(--color-background);
+            min-height: 100vh;
+            padding: 0;
+            /* Handled by page-wrapper */
+        }
+
+        /* ============================================
+           A4 RESUME CONTAINER
+        ============================================ */
+        .resume {
+            width: 100%;
+            max-width: var(--a4-width);
+            min-height: var(--a4-min-height);
+            margin: 0 auto;
+            background-color: var(--color-paper);
+            box-shadow:
+                0 4px 6px rgba(0, 0, 0, 0.05),
+                0 10px 40px rgba(0, 0, 0, 0.08);
+            padding: var(--spacing-2xl);
+        }
+
+        /* ============================================
+           HEADER SECTION
+        ============================================ */
+        .resume-header {
+            text-align: center;
+            padding-bottom: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+            border-bottom: 2px solid var(--color-accent);
+        }
+
+        .resume-name {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-accent);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .resume-title {
+            font-size: var(--font-size-lg);
+            font-weight: 400;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+
+
+        /* Contact Information */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-sm) var(--spacing-lg);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-muted);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .contact-item::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            background-color: var(--color-text-muted);
+            border-radius: 50%;
+        }
+
+        .contact-item:first-child::before {
+            display: none;
+        }
+
+        /* ============================================
+           MAIN CONTENT - TWO COLUMN GRID
+        ============================================ */
+        .resume-content {
+            display: grid;
+            grid-template-columns: var(--left-column-width) var(--right-column-width);
+            gap: 0;
+            position: relative;
+        }
+
+        /* Continuous Vertical Separator Line */
+        .resume-content::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: var(--left-column-width);
+            width: var(--separator-width);
+            height: 100%;
+            background-color: var(--color-border);
+        }
+
+        /* ============================================
+           SECTION STYLES
+        ============================================ */
+        .section {
+            display: contents;
+            /* Allows children to participate in parent grid */
+        }
+
+        /* Left Column - Section Headings */
+        .section-heading {
+            position: relative;
+            padding: var(--spacing-md) var(--spacing-lg) var(--spacing-md) 0;
+            text-align: right;
+        }
+
+        .section-heading h2 {
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-accent);
+        }
+
+        /* Right Column - Section Content */
+        .section-content {
+            padding: var(--spacing-md) 0 var(--spacing-md) var(--spacing-lg);
+        }
+
+        /* ============================================
+           TYPOGRAPHY & TEXT STYLES
+        ============================================ */
+        .summary-text {
+            font-size: var(--font-size-base);
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+        }
+
+        /* ============================================
+           EXPERIENCE & EDUCATION ENTRIES
+        ============================================ */
+        .entry {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .entry:last-child {
+            margin-bottom: 0;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .entry-title {
+            font-size: var(--font-size-md);
+            font-weight: 600;
+            color: var(--color-text-primary);
+        }
+
+        .entry-date {
+            font-size: var(--font-size-sm);
+            font-weight: 700;
+            color: var(--color-text-muted);
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .entry-subtitle {
+            font-size: var(--font-size-sm);
+            font-weight: 400;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .entry-description {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Entry bullet list */
+        .entry-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .entry-list li {
+            position: relative;
+            padding-left: var(--spacing-md);
+            margin-bottom: var(--spacing-xs);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+
+        .entry-list li::before {
+            content: '–';
+            position: absolute;
+            left: 0;
+            color: var(--color-text-muted);
+        }
+
+        /* ============================================
+           SKILLS SECTION
+        ============================================ */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-xs) var(--spacing-xl);
+            column-gap: 2rem;
+        }
+
+        .skill-item {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            padding: var(--spacing-sm) 0;
+            position: relative;
+            padding-left: 1.2rem;
+            /* Restore original padding */
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: background-color 0.2s ease;
+        }
+
+        .skill-item:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+
+        .skill-item::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            /* Align dots to the left of the padding */
+            color: var(--color-accent);
+            font-size: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+        ============================================ */
+
+        /* Tablet and smaller screens */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: var(--spacing-md);
+            }
+
+            .resume {
+                padding: var(--spacing-xl);
+            }
+
+            .resume-name {
+                font-size: var(--font-size-xl);
+                letter-spacing: 0.1em;
+            }
+
+            .resume-title {
+                font-size: var(--font-size-md);
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: var(--spacing-xs);
+            }
+
+            .contact-item::before {
+                display: none;
+            }
+
+            /* Switch to single column layout */
+            .resume-content {
+                grid-template-columns: 1fr;
+            }
+
+            .resume-content::after {
+                display: none;
+            }
+
+            .section-heading {
+                text-align: left;
+                padding: var(--spacing-md) 0 var(--spacing-xs) 0;
+                border-bottom: 1px solid var(--color-border);
+            }
+
+            .section-heading::after {
+                display: none;
+            }
+
+            .section-content {
+                padding: var(--spacing-md) 0 var(--spacing-lg) 0;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Mobile screens */
+        @media screen and (max-width: 480px) {
+            body {
+                padding: var(--spacing-sm);
+            }
+
+            .resume {
+                padding: var(--spacing-lg);
+            }
+
+            .resume-name {
+                font-size: var(--font-size-lg);
+            }
+
+            .entry-header {
+                flex-direction: column;
+            }
+
+            .entry-date {
+                text-align: left;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            html {
+                font-size: 17.8px;
+            }
+
+            body {
+                background: none;
+                padding: 0;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            @page {
+                size: A4;
+                margin: 4mm;
+            }
+
+            .resume {
+                box-shadow: none;
+                max-width: none;
+                width: 100%;
+                padding: 3mm 8mm;
+                /* Slightly tighter top/bottom */
+                min-height: auto;
+            }
+
+            /* Ensure the separator line is visible in print */
+            .resume-content::after {
+                background-color: var(--color-border) !important;
+                display: block !important;
+                height: 100% !important;
+            }
+
+            .resume-header {
+                padding-bottom: 5px;
+                margin-bottom: 8px;
+            }
+
+            .resume-name {
+                font-size: 34px;
+                letter-spacing: 0.1em;
+                margin-bottom: 4px;
+            }
+
+            .resume-title {
+                font-size: 19px;
+                margin-bottom: 8px;
+            }
+
+
+
+            .contact-info {
+                font-size: 11.5px;
+                gap: 4px 15px;
+            }
+
+            .section-heading h2 {
+                font-size: 11.5px;
+                font-weight: 700;
+                line-height: 1.1;
+            }
+
+            .section-content {
+                padding: 6px 0 6px 20px;
+                /* Subtly reduced */
+            }
+
+            .summary-text {
+                font-size: 14.8px;
+                line-height: 1.55;
+            }
+
+            .entry {
+                margin-bottom: 6px;
+                /* Slightly tighter to keep one-page fit */
+            }
+
+            .entry-title {
+                font-size: 16.2px;
+                font-weight: 600;
+            }
+
+            .entry-subtitle {
+                font-size: 14px;
+                margin-bottom: 3px;
+            }
+
+            .entry-date {
+                font-size: 14px;
+                font-weight: 700;
+            }
+
+            .entry-list li {
+                font-size: 14px;
+                margin-bottom: 3px;
+                line-height: 1.35;
+            }
+
+            .skill-item {
+                font-size: 14px;
+                padding: 3px 0;
+                padding-left: 1.4rem;
+                border-bottom: none;
+            }
+
+            .download-btn {
+                display: none !important;
+            }
+        }
+
+        /* Download Buttons Container */
+        .export-btn-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #3a3a3a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            font-family: var(--font-family);
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-btn {
+            background: linear-gradient(135deg, #2c3e50 0%, #000000 100%);
+        }
+
+        @media print {
+            .export-btn-container {
+                display: none !important;
+            }
+        }
+
+        /* Sidebar Image Gallery Styles */
+        .page-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            /* Reduced gap */
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .side-gallery {
+            flex: 0 0 200px;
+            /* Reduced width to fit on more screens */
+            height: calc(100vh - 40px);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            position: sticky;
+            top: 20px;
+            background: rgba(45, 45, 45, 0.92);
+            /* Dark theme matching accent colors */
+            padding: 15px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            /* Custom Scrollbar */
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+        }
+
+        .side-gallery::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .side-gallery::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        .side-gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .side-gallery img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Hide sidebars on small screens */
+        @media screen and (max-width: 1100px) {
+            .side-gallery {
+                display: none;
+            }
+
+            .page-wrapper {
+                padding: var(--spacing-md);
+            }
+        }
+
+        /* Hide sidebars in print */
+        @media print {
+            .side-gallery {
+                display: none !important;
+            }
+
+            .page-wrapper {
+                display: block;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- html2canvas for image export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <script>
+        function downloadImage() {
+            const resume = document.querySelector('.resume');
+            const button = document.querySelector('.export-btn-container');
+
+            // Hide buttons temporarily
+            button.style.display = 'none';
+
+            html2canvas(resume, {
+                scale: 2, // Higher quality
+                useCORS: true,
+                backgroundColor: "#ffffff"
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'Mohamed_Mahmoud_Resume.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+                button.style.display = 'flex';
+            });
+        }
+    </script>
+
+    <!-- Download Buttons -->
+    <div class="export-btn-container">
+        <button class="download-btn image-btn" onclick="downloadImage()">🖼️ PNG</button>
+    </div>
+
+    <div class="page-wrapper">
+        <!-- Left Side Gallery -->
+        <aside class="side-gallery left-side">
+            <!-- Left Side Gallery - Images 1 to 8 -->
+            <img src="1.jpeg" alt="Work Photo 1">
+            <img src="2.jpeg" alt="Work Photo 2">
+            <img src="3.jpeg" alt="Work Photo 3">
+            <img src="4.jpeg" alt="Work Photo 4">
+            <img src="5.jpeg" alt="Work Photo 5">
+            <img src="6.jpeg" alt="Work Photo 6">
+            <img src="7.jpeg" alt="Work Photo 7">
+            <img src="8.jpeg" alt="Work Photo 8">
+        </aside>
+
+        <!-- Main Resume Container -->
+        <article class="resume" role="document" aria-label="Resume">
+
+            <!-- ==========================================
+             HEADER SECTION
+        ========================================== -->
+            <header class="resume-header">
+                <h1 class="resume-name">Mohamed Mahmoud Ibrahim</h1>
+                <p class="resume-title">Mobile Phone Technician & Microsoldering Specialist</p>
+
+                <!-- Contact Information -->
+                <address class="contact-info">
+                    <span class="contact-item">mk13072000k@gmail.com</span>
+                    <span class="contact-item">+971 58 249 0186</span>
+                    <span class="contact-item">Abu Hail, UAE</span>
+                </address>
+            </header>
+
+            <!-- ==========================================
+             MAIN CONTENT - TWO COLUMN LAYOUT
+        ========================================== -->
+            <main class="resume-content">
+
+                <!-- SUMMARY SECTION -->
+                <section class="section" aria-labelledby="summary-heading">
+                    <div class="section-heading">
+                        <h2 id="summary-heading">PROFESSIONAL SUMMARY</h2>
+                    </div>
+                    <div class="section-content">
+                        <p class="summary-text">
+                            Skilled Mobile Phone Technician with over 4+ years of specialized experience in
+                            microsoldering
+                            and motherboard-level repairs. Expert in diagnosing complex hardware faults with high
+                            accuracy.
+                            Complementing my technical repair expertise, I have practical experience in Flutter
+                            development,
+                            creating smart digital solutions that improve business efficiency and workflow.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- WORK EXPERIENCE SECTION -->
+                <section class="section" aria-labelledby="experience-heading">
+                    <div class="section-heading">
+                        <h2 id="experience-heading">WORK EXPERIENCE</h2>
+                    </div>
+                    <div class="section-content">
+
+                        <!-- Job Entry -->
+                        <article class="entry">
+                            <header class="entry-header">
+                                <h3 class="entry-title">Mobile Phone Technician & Microsoldering Specialist</h3>
+                                <span class="entry-date">2021 – Present</span>
+                            </header>
+                            <ul class="entry-list">
+                                <li>Diagnose and repair hardware and software issues across various smartphone brands
+                                </li>
+                                <li>Perform advanced microsoldering on motherboard components and PCB circuits</li>
+                                <li>Replace ICs, charging ports, connectors, and damaged components with high accuracy
+                                </li>
+                                <li>Troubleshoot power failure, no signal, boot loop, and liquid-damaged devices</li>
+                                <li>Conduct full device testing after repair to ensure functionality and quality
+                                    standards
+                                </li>
+                                <li>Communicate clearly with customers regarding device issues and repair solutions</li>
+                            </ul>
+                        </article>
+
+                    </div>
+                </section>
+
+
+                <!-- EDUCATION SECTION -->
+                <section class="section" aria-labelledby="education-heading">
+                    <div class="section-heading">
+                        <h2 id="education-heading">EDUCATION</h2>
+                    </div>
+                    <div class="section-content">
+
+                        <!-- Education Entry -->
+                        <article class="entry">
+                            <header class="entry-header">
+                                <h3 class="entry-title">Bachelor's Degree in Law</h3>
+                                <span class="entry-date">Graduation Year: 2025</span>
+                            </header>
+                            <p class="entry-subtitle">Alexandria University, Egypt</p>
+                        </article>
+
+                    </div>
+                </section>
+
+                <!-- LANGUAGES SECTION -->
+                <section class="section" aria-labelledby="languages-heading">
+                    <div class="section-heading">
+                        <h2 id="languages-heading">LANGUAGES</h2>
+                    </div>
+                    <div class="section-content">
+                        <div class="skills-grid">
+                            <span class="skill-item">Arabic: Native Language</span>
+                            <span class="skill-item">English: Good Level</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- KEY SKILLS SECTION -->
+                <section class="section" aria-labelledby="skills-heading">
+                    <div class="section-heading">
+                        <h2 id="skills-heading">KEY SKILLS</h2>
+                    </div>
+                    <div class="section-content">
+                        <div class="skills-grid">
+                            <span class="skill-item">Mobile Phone Repair & Microsoldering</span>
+                            <span class="skill-item">Board-Level Repair & IC Replacement</span>
+                            <span class="skill-item">Advanced Fault Diagnosis</span>
+                            <span class="skill-item">Flutter & Supabase Development</span>
+                            <span class="skill-item">Inventory & Payment Systems</span>
+                            <span class="skill-item">Professional Repair Tools</span>
+                            <span class="skill-item">Customer Assessment & Communication</span>
+                            <span class="skill-item">Water Damage Repair</span>
+                            <span class="skill-item">Maintenance Level: Level 3 (vE3)</span>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </article>
+
+        <!-- Right Side Gallery -->
+        <aside class="side-gallery right-side">
+            <!-- Right Side Gallery - Images 9 to 16 -->
+            <img src="9.jpeg" alt="Work Photo 9">
+            <img src="10.jpeg" alt="Work Photo 10">
+            <img src="11.jpeg" alt="Work Photo 11">
+            <img src="12.jpeg" alt="Work Photo 12">
+            <img src="13.jpeg" alt="Work Photo 13">
+            <img src="14.jpeg" alt="Work Photo 14">
+            <img src="15.jpeg" alt="Work Photo 15">
+            <img src="16.jpeg" alt="Work Photo 16">
+        </aside>
+    </div>
+</body>
+
+</html>
