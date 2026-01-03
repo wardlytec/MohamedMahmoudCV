@@ -541,47 +541,7 @@
             }
         }
 
-        /* Download Buttons Container */
-        .export-btn-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-            z-index: 1000;
-        }
 
-        .download-btn {
-            background: linear-gradient(135deg, #3a3a3a 0%, #2d2d2d 100%);
-            color: #ffffff;
-            border: none;
-            padding: 12px 20px;
-            font-family: var(--font-family);
-            font-size: var(--font-size-sm);
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .image-btn {
-            background: linear-gradient(135deg, #2c3e50 0%, #000000 100%);
-        }
-
-        @media print {
-            .export-btn-container {
-                display: none !important;
-            }
-        }
 
         /* Sidebar Image Gallery Styles */
         .page-wrapper {
@@ -668,35 +628,7 @@
 </head>
 
 <body>
-    <!-- html2canvas for image export -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-    <script>
-        function downloadImage() {
-            const resume = document.querySelector('.resume');
-            const button = document.querySelector('.export-btn-container');
-
-            // Hide buttons temporarily
-            button.style.display = 'none';
-
-            html2canvas(resume, {
-                scale: 2, // Higher quality
-                useCORS: true,
-                backgroundColor: "#ffffff"
-            }).then(canvas => {
-                const link = document.createElement('a');
-                link.download = 'Mohamed_Mahmoud_Resume.png';
-                link.href = canvas.toDataURL('image/png');
-                link.click();
-                button.style.display = 'flex';
-            });
-        }
-    </script>
-
-    <!-- Download Buttons -->
-    <div class="export-btn-container">
-        <button class="download-btn image-btn" onclick="downloadImage()">🖼️ PNG</button>
-    </div>
 
     <div class="page-wrapper">
         <!-- Left Side Gallery -->
