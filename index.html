@@ -634,12 +634,13 @@
         }
 
         .side-gallery {
-            flex: 0 0 200px;
-            /* Reduced width to fit on more screens */
+            flex: 0 0 210px;
+            /* Adjusted for single column */
             height: calc(100vh - 40px);
             overflow-y: auto;
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: 1fr;
+            /* Single column on all sizes */
             gap: 15px;
             position: sticky;
             top: 20px;
@@ -680,6 +681,40 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
+        .mobile-unified-gallery {
+            display: none;
+            width: 100%;
+            padding: 30px 20px;
+            background: rgba(45, 45, 45, 0.4);
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gallery-title {
+            color: #ffffff;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .mobile-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .mobile-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
         /* Mobile Responsive Layout and Galleries */
         @media screen and (max-width: 1100px) {
             .page-wrapper {
@@ -691,28 +726,18 @@
 
             .resume {
                 order: -1;
-                /* Keep resume at the top */
                 width: 100% !important;
                 max-width: 850px;
             }
 
             .side-gallery {
-                flex: none;
-                width: 100%;
-                height: auto;
-                max-height: none;
-                overflow: visible;
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-                gap: 15px;
-                padding: 20px;
-                background: rgba(45, 45, 45, 0.4);
+                display: none;
+                /* Hide sidebars completely on mobile */
             }
 
-            .side-gallery img {
-                height: 180px;
-                object-fit: cover;
-                border: 1px solid rgba(255, 255, 255, 0.2);
+            .mobile-unified-gallery {
+                display: block;
+                /* Show unified gallery on mobile */
             }
         }
 
@@ -783,7 +808,7 @@
 
     <!-- Download Buttons -->
     <div class="export-btn-container">
-        <button class="download-btn image-btn" onclick="downloadImage()">🖼️ PNG</button>
+        <button class="download-btn image-btn" onclick="downloadImage()">📥 Download CV</button>
     </div>
 
 
@@ -945,6 +970,29 @@
             <img src="15.jpeg" alt="Work Photo 15">
             <img src="16.jpeg" alt="Work Photo 16">
         </aside>
+
+        <!-- Unified Mobile Gallery (Visible only on mobile/small screens) -->
+        <div class="mobile-unified-gallery" data-html2canvas-ignore="true">
+            <h3 class="gallery-title">WORK PORTFOLIO</h3>
+            <div class="mobile-grid">
+                <img src="1.jpeg" alt="Work Photo 1">
+                <img src="2.jpeg" alt="Work Photo 2">
+                <img src="3.jpeg" alt="Work Photo 3">
+                <img src="4.jpeg" alt="Work Photo 4">
+                <img src="5.jpeg" alt="Work Photo 5">
+                <img src="6.jpeg" alt="Work Photo 6">
+                <img src="7.jpeg" alt="Work Photo 7">
+                <img src="8.jpeg" alt="Work Photo 8">
+                <img src="9.jpeg" alt="Work Photo 9">
+                <img src="10.jpeg" alt="Work Photo 10">
+                <img src="11.jpeg" alt="Work Photo 11">
+                <img src="12.jpeg" alt="Work Photo 12">
+                <img src="13.jpeg" alt="Work Photo 13">
+                <img src="14.jpeg" alt="Work Photo 14">
+                <img src="15.jpeg" alt="Work Photo 15">
+                <img src="16.jpeg" alt="Work Photo 16">
+            </div>
+        </div>
     </div>
 </body>
 
